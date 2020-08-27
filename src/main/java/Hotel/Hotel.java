@@ -6,6 +6,7 @@ import Hotel.Rooms.Bedroom;
 import Hotel.Rooms.ConferenceRoom;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 
 public class Hotel {
@@ -32,17 +33,33 @@ public class Hotel {
 
     public ArrayList<Booking> getBookings() { return bookings; }
 
-    public void checkIn(Room room, Guest guest) {
-        room.addGuest(guest);
+    public void checkIn(Room room, ArrayList<Guest> guests) {
+        if (guests.size() < room.getCapacity() && room.isEmpty()) {
+            for (Guest guest : guests) {
+                room.addGuest(guest);
+            }
+        }
     }
 
-    public void checkOut(Room room, Guest guest) {
-        room.removeGuest(guest);
+    public void checkOut(Room room, ArrayList<Guest> guests) {
+        for (Guest guest : guests) {
+            room.removeGuest(guest);
+        }
     }
 
     public Booking bookRoom(Bedroom bookedRoom, int nightsBooked) {
         Booking newBooking = new Booking(bookedRoom, nightsBooked);
         this.bookings.add(newBooking);
         return newBooking;
+    }
+
+    public ArrayList<Bedroom> getVacantRooms() {
+        ArrayList<Bedroom> vacantRooms = new ArrayList<Bedroom>();
+        for (Bedroom bedroom: bedrooms) {
+            if (bedroom.getGuests().size() == 0 ){
+                vacantRooms.add(bedroom);
+            }
+        }
+        return vacantRooms;
     }
 }

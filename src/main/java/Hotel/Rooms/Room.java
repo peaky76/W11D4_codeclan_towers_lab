@@ -33,4 +33,8 @@ public abstract class Room {
             guests.remove(guest);
         }
     }
+
+    public boolean isEmpty() {
+        return guests.size() == 0;
+    }
 }
