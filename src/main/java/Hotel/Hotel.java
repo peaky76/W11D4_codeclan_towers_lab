@@ -34,7 +34,7 @@ public class Hotel {
     public ArrayList<Booking> getBookings() { return bookings; }
 
     public void checkIn(Room room, ArrayList<Guest> guests) {
-        if (guests.size() < room.getCapacity() && room.isEmpty()) {
+        if (room.isEmpty()) {
             for (Guest guest : guests) {
                 room.addGuest(guest);
             }
