@@ -21,4 +21,10 @@ public abstract class Room {
     public ArrayList<Guest> getGuests() {
         return guests;
     }
+
+    public void addGuest(Guest guest) {
+        if (guests.size() < capacity) {
+            guests.add(guest);
+        }
+    }
 }
