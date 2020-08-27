@@ -21,12 +21,16 @@ public class HotelTest {
     @Before
     public void before() {
         bedrooms = new ArrayList<Bedroom>();
-        for (int i = 0; i < 20; ++i) {
-            bedrooms.add(new Bedroom(i + 1, RoomType.DOUBLE));
+        for (int i = 0; i < 80; i += 4) {
+            bedrooms.add(new Bedroom(i + 1, RoomType.SINGLE));
+            bedrooms.add(new Bedroom( i + 2, RoomType.DOUBLE));
+            bedrooms.add(new Bedroom( i + 3, RoomType.TWIN));
+            bedrooms.add(new Bedroom( i + 4, RoomType.FAMILY));
         }
         conferenceRooms = new ArrayList<ConferenceRoom>();
         conferenceRooms.add(new ConferenceRoom("Pentland Room", 100));
         conferenceRooms.add(new ConferenceRoom("Forth Room", 150));
+        conferenceRooms.add(new ConferenceRoom("Lothian Room", 250));
         codeClanTowers = new Hotel(bedrooms, conferenceRooms);
         guest1 = new Guest("Fred Bloggs");
         guest2 = new Guest("Guesty McGuestface");
@@ -34,12 +38,12 @@ public class HotelTest {
 
     @Test
     public void hasBedrooms() {
-        assertEquals(20, codeClanTowers.getBedrooms().size());
+        assertEquals(80, codeClanTowers.getBedrooms().size());
     }
 
     @Test
     public void hasConferenceRooms() {
-        assertEquals(2, codeClanTowers.getConferenceRooms().size());
+        assertEquals(3, codeClanTowers.getConferenceRooms().size());
     }
 
     @Test
