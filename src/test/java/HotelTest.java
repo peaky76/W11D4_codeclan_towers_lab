@@ -1,5 +1,6 @@
 import Hotel.Hotel;
 import Hotel.Guest;
+import Hotel.Booking;
 import Hotel.Rooms.Bedroom;
 import Hotel.Rooms.ConferenceRoom;
 import Hotel.Rooms.RoomType;
@@ -58,6 +59,14 @@ public class HotelTest {
         Bedroom bookedRoom = codeClanTowers.getBedrooms().get(0);
         codeClanTowers.checkOut(bookedRoom, guest1);
         assertEquals(0, bookedRoom.getGuests().size() );
+    }
+
+    @Test
+    public void canBookRoom() {
+        Bedroom bookedRoom = codeClanTowers.getBedrooms().get(0);
+        Booking booking = codeClanTowers.bookRoom(bookedRoom, 5);
+        assertEquals(bookedRoom, booking.getBedroom());
+        assertEquals(5, booking.getNightsBooked());
     }
 
 }
