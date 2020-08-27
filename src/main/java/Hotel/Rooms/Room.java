@@ -27,4 +27,10 @@ public abstract class Room {
             guests.add(guest);
         }
     }
+
+    public void removeGuest(Guest guest) {
+        if (guests.contains(guest)) {
+            guests.remove(guest);
+        }
+    }
 }
